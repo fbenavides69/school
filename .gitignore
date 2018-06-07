@@ -81,7 +81,7 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
-# Environments
+# virtualenv
 .env
 .venv
 env/
@@ -102,3 +102,14 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# NodeJS modules
+node_modules/
+
+# Yarn
+yarn.lock
+
+# Other
+.idea
+.DS_Store
+.sass-cache
