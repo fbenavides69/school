@@ -7,7 +7,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>User Registration Success</h1>
-    <p>You have successfully registered</p>
-    <p>Click <a href="{% url 'login' %}?next=/">here</a> to log in</p>
+    <div class="column" style="max-width: 450px;">
+        <h1 class="ui blue header">
+            <div class="content">User Registration Success</div>
+        </h1>
+
+        <div class="ui message">
+            <p>You have successfully registered</p>
+        </div>
+        <p><a href="{% url 'login' %}?next=/">Click to log in</a></p>
+        {% csrf_token %}
+    </div>
 {% endblock %}
