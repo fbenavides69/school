@@ -2,8 +2,20 @@
 
 {% block title %}User Registration Success{% endblock %}
 
-{% block sidenav %}
-    <li><a href="/">Home</a></li>
+{% block menunav %}
+    <a href="/" class="brand item">School</a>
+    <div class="right menu">
+        <a href="{% url 'register' %}" class="item">Register</a>
+        <a href="{% url 'login' %}" class="item">Login</a>
+    </div>
+{% endblock %}
+
+{% block verticalmenunav %}
+    <a href="/" class="brand item">School</a>
+    <div class="right menu">
+        <a href="{% url 'register' %}" class="item">Register</a>
+        <a href="{% url 'login' %}" class="item">Login</a>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -12,10 +24,9 @@
             <div class="content">User Registration Success</div>
         </h1>
 
-        <div class="ui message">
+        <div class="ui success message">
             <p>You have successfully registered</p>
         </div>
-        <p><a href="{% url 'login' %}?next=/">Click to log in</a></p>
         {% csrf_token %}
     </div>
 {% endblock %}

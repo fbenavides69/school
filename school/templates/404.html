@@ -2,8 +2,20 @@
 
 {% block title %}Page Not Found{% endblock %}
 
-{% block sidebav %}
-    <li><a href="/">Home</a></li>
+{% block menunav %}
+    <a href="/" class="brand item">School</a>
+    <div class="right menu">
+        <a href="{% url 'register' %}" class="item">Register</a>
+        <a href="{% url 'login' %}" class="item">Login</a>
+    </div>
+{% endblock %}
+
+{% block verticalmenunav %}
+    <a href="/" class="brand item">School</a>
+    <div class="right menu">
+        <a href="{% url 'register' %}" class="item">Register</a>
+        <a href="{% url 'login' %}" class="item">Login</a>
+    </div>
 {% endblock %}
 
 {% block content %}

@@ -2,8 +2,20 @@
 
 {% block title %}User Registration{% endblock %}
 
-{% block sidenav %}
-    <li class="active item"><a href="/">Home</a></li>
+{% block menunav %}
+    <a href="/" class="brand item">School</a>
+    <div class="right menu">
+        <a href="{% url 'register' %}" class="active item">Register</a>
+        <a href="{% url 'login' %}" class="item">Login</a>
+    </div>
+{% endblock %}
+
+{% block verticalmenunav %}
+    <a href="/" class="brand item">School</a>
+    <div class="right menu">
+        <a href="{% url 'register' %}" class="active item">Register</a>
+        <a href="{% url 'login' %}" class="item">Login</a>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -14,7 +26,7 @@
         </h1>
         <p>Enter your username and password to register</p>
 
-        <div class="ui stacked segment">
+        <div class="ui segment">
             <form class="ui form" method="post" action="{% url 'register' %}">
                 <div class="field">
                     <div class="ui left icon input">

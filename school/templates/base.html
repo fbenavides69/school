@@ -1,46 +1,119 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+
     <title>
       {% block title %}
         Untitled Document
-      {% endblock title %}
+      {% endblock %}
     </title>
-    <!-- <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css"> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css" rel="stylesheet"  type="text/css">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="wrapper">
-      <header id="header">
-        <div id="logo">
-          <!-- <img src="{% static 'logo.jpg' %}" alt=""/> -->
-          <span style="float: right;">
-            {% if user.is_authenticated %}
-              Hello, {{ user.username }} <a href="{% url 'logout' %}?next=/">Log out</a>
-            {% else %}
-              Not logged in <a href="{% url 'login' %}?next=/">Log in</a>
-            {% endif %}
-          </span>
+    <div class="ui center aligned page grid">
+      <div class="computer tablet only row">
+        <div class="ui fluid inverted navbar menu">
+          {% block menunav %}
+            <a href="/" class="brand item">School</a>
+            <!--a href="" class="active item">Link</a-->
+            <!--a href="" class="item">Link</a-->
+            <!--a href="" class="item">Link</a-->
+            <!--a class="ui dropdown item">Dropdown
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <div class="item">Action</div>
+                <div class="item">Another action</div>
+                <div class="item">Something else here</div>
+                <div class="ui divider"></div>
+                <div class="item">Seperated link</div>
+                <div class="item">One more seperated link</div>
+              </div>
+            </a-->
+            <div class="right menu">
+                <a href="{% url 'register' %}" class="item">Register</a>
+                <a href="{% url 'login' %}" class="item">Login</a>
+            </div>
+          {% endblock %}
         </div>
-        <!-- <div id="topbanner"><img src="{% static 'top_banner.png' %}" width="800" height="200" alt=""/></div> -->
-      </header>
-      <aside id="leftsidebar">
-        <nav id="nav">
-          <ul>
-            {% block sidenav %}
-              <!-- <li>Menu 1</li><li>Menu 2</li><li>Menu 3</li> -->
+      </div>
+
+      <div class="mobile only narrow row">
+          <div class="ui inverted navbar menu">
+              <a href="" class="brand item">School</a>
+              <div class="right menu open">
+                  <a href="#" class="item menu">
+                      <i class="inverted bars icon"></i>
+                  </a>
+              </div>
+          </div>
+
+          <div class="ui vertical navbar menu">
+            {% block verticalmenunav %}
+              <a href="/" class="brand item">School</a>
+              <div class="right menu">
+                  <a href="{% url 'register' %}" class="item">Register</a>
+                  <a href="{% url 'login' %}" class="item">Login</a>
+              </div>
             {% endblock %}
-          </ul>
-        </nav>
-      </aside>
-      <section id="main">
-        {% block content %}
-          <h1>Welcome!</h1>
-          <p>This is the site template</p>
-        {% endblock %}
-      </section>
-      <footer id="footer">Copyright &copy; 2018 iWYP</footer>
+          </div>
+      </div>
     </div>
+
+    <div class="ui center aligned page grid">
+        <div class="ui center aligned basic segment">
+          <!--div class="ui container"-->
+            {% block content %}
+              <h1 class="ui header">Template</h1>
+              <p>Base Template</p>
+            {% endblock %}
+          <!--/div-->
+          <script src="{% static 'dist/bundle.js' %}" type="text/javascript" ></script>
+        </div>
+
+        <div class="ui inverted segment">
+          <div class="ui inverted stackable divided equal height grid">
+            <div class="row">
+              <div class="three wide column">
+                <h4 class="ui inverted header">About</h4>
+                <div class="ui inverted link list">
+                  <a href="#" class="item">Sitemap</a>
+                  <a href="#" class="item">Contact Us</a>
+                  <a href="#" class="item">Religious Ceremonies</a>
+                  <a href="#" class="item">Gazebo Plans</a>
+                </div>
+              </div>
+              <div class="three wide column">
+                <h4 class="ui inverted header">Services</h4>
+                <div class="ui inverted link list">
+                  <a href="#" class="item">Banana Pre-Order</a>
+                  <a href="#" class="item">DNA FAQ</a>
+                  <a href="#" class="item">How To Access</a>
+                  <a href="#" class="item">Favorite X-Men</a>
+                </div>
+              </div>
+              <div class="seven wide column">
+                <h4 class="ui inverted header">Footer Header</h4>
+                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ui center aligned container">
+            Copyright &copy; 2018 iWYP
+          </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
