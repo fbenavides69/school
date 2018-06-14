@@ -1,25 +1,9 @@
 {% extends 'base.html' %}
-{% load static %}
+{% include "_nav.html" %}
 
 {% block title %}Welcome{% endblock %}
 
-{% block menunav %}
-    <a href="/" class="brand item">School</a>
-    <div class="right menu">
-        <a href="{% url 'register' %}" class="item">Register</a>
-        <a href="{% url 'login' %}" class="item">Login</a>
-    </div>
-{% endblock %}
-
-{% block verticalmenunav %}
-    <a href="/" class="brand item">School</a>
-    <div class="right menu">
-        <a href="{% url 'register' %}" class="item">Register</a>
-        <a href="{% url 'login' %}" class="item">Login</a>
-    </div>
-{% endblock %}
-
 {% block content %}
-    <h1 class="ui header">Django</h1>
+    <h1 class="ui blue header">Django</h1>
     <div id="react-welcome"></div>
 {% endblock %}

@@ -18,9 +18,18 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
   </head>
   <body>
+    <div class="ui fuild right aligned container">
+      {% if user.is_authenticated %}
+        {{ user.username }}
+      {% else %}
+        Anonymous
+      {% endif %}
+      <i class="blue user icon"></i>
+    </div>
+
     <div class="ui center aligned page grid">
       <div class="computer tablet only row">
-        <div class="ui fluid inverted navbar menu">
+        <div class="ui blue fluid inverted navbar menu">
           {% block menunav %}
             <a href="/" class="brand item">School</a>
             <!--a href="" class="active item">Link</a-->
@@ -38,15 +47,19 @@
               </div>
             </a-->
             <div class="right menu">
+              {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="item">Logout</a>
+              {% else %}
                 <a href="{% url 'register' %}" class="item">Register</a>
                 <a href="{% url 'login' %}" class="item">Login</a>
+              {% endif %}
             </div>
           {% endblock %}
         </div>
       </div>
 
       <div class="mobile only narrow row">
-          <div class="ui inverted navbar menu">
+          <div class="ui blue inverted navbar menu">
               <a href="" class="brand item">School</a>
               <div class="right menu open">
                   <a href="#" class="item menu">
@@ -55,61 +68,83 @@
               </div>
           </div>
 
-          <div class="ui vertical navbar menu">
+          <div class="ui blue iverted vertical navbar menu">
             {% block verticalmenunav %}
               <a href="/" class="brand item">School</a>
+              <!--a href="" class="active item">Link</a-->
+              <!--a href="" class="item">Link</a-->
+              <!--a href="" class="item">Link</a-->
+              <!--a class="ui dropdown item">Dropdown
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="item">Action</div>
+                  <div class="item">Another action</div>
+                  <div class="item">Something else here</div>
+                  <div class="ui divider"></div>
+                  <div class="item">Seperated link</div>
+                  <div class="item">One more seperated link</div>
+                </div>
+              </a-->
               <div class="right menu">
+                {% if user.is_authenticated %}
+                  <a href="{% url 'logout' %}" class="item">Logout</a>
+                {% else %}
                   <a href="{% url 'register' %}" class="item">Register</a>
                   <a href="{% url 'login' %}" class="item">Login</a>
+                {% endif %}
               </div>
             {% endblock %}
           </div>
       </div>
     </div>
 
-    <div class="ui center aligned page grid">
+    <div class="ui fuild basic very padded container segment">
+      <div class="ui center aligned page grid">
         <div class="ui center aligned basic segment">
-          <!--div class="ui container"-->
             {% block content %}
               <h1 class="ui header">Template</h1>
               <p>Base Template</p>
             {% endblock %}
-          <!--/div-->
           <script src="{% static 'dist/bundle.js' %}" type="text/javascript" ></script>
         </div>
+      </div>
+    </div>
 
-        <div class="ui inverted segment">
-          <div class="ui inverted stackable divided equal height grid">
-            <div class="row">
-              <div class="three wide column">
-                <h4 class="ui inverted header">About</h4>
-                <div class="ui inverted link list">
-                  <a href="#" class="item">Sitemap</a>
-                  <a href="#" class="item">Contact Us</a>
-                  <a href="#" class="item">Religious Ceremonies</a>
-                  <a href="#" class="item">Gazebo Plans</a>
-                </div>
+    <div class="ui fuild container">
+      <div class="computer tablet only row">
+        <div class="ui inverted stackable divided equal height grid">
+          <div class="blue row">
+            <div class="three wide column">
+              <h4 class="ui inverted header">About</h4>
+              <div class="ui inverted link list">
+                <a href="#" class="item">Sitemap</a>
+                <a href="#" class="item">Contact Us</a>
+                <a href="#" class="item">Religious Ceremonies</a>
+                <a href="#" class="item">Gazebo Plans</a>
               </div>
-              <div class="three wide column">
-                <h4 class="ui inverted header">Services</h4>
-                <div class="ui inverted link list">
-                  <a href="#" class="item">Banana Pre-Order</a>
-                  <a href="#" class="item">DNA FAQ</a>
-                  <a href="#" class="item">How To Access</a>
-                  <a href="#" class="item">Favorite X-Men</a>
-                </div>
+            </div>
+            <div class="three wide column">
+              <h4 class="ui inverted header">Services</h4>
+              <div class="ui inverted link list">
+                <a href="#" class="item">Banana Pre-Order</a>
+                <a href="#" class="item">DNA FAQ</a>
+                <a href="#" class="item">How To Access</a>
+                <a href="#" class="item">Favorite X-Men</a>
               </div>
-              <div class="seven wide column">
-                <h4 class="ui inverted header">Footer Header</h4>
-                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-              </div>
+            </div>
+            <div class="seven wide column">
+              <h4 class="ui inverted header">Footer Header</h4>
+              <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
             </div>
           </div>
 
-          <div class="ui center aligned container">
-            Copyright &copy; 2018 iWYP
+          <div class="blue row">
+            <div class="center aligned column">
+              Copyright &copy; 2018 iWYP
+            </div>
           </div>
         </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
