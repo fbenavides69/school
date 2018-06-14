@@ -7,11 +7,10 @@
     <div class="column" style="max-width: 450px;">
 
         <h1 class="ui blue header">
-            <div class="content">Please Login</div>
+            <div class="content">Login</div>
         </h1>
-        <p>You must be logged in to submit or view quotes</p>
 
-        <div class="ui segment">
+        <div class="ui basic segment">
             <form class="ui form" method="post" action="{% url 'login' %}">
                 <div class="field">
                     <div class="ui left icon input">
@@ -33,10 +32,5 @@
                 {% csrf_token %}
             </form>
         </div>
-
-        <div class="ui message">
-            <p><a href="{% url 'register' %}">Not registered yet? Click here</a></p>
-        </div>
-
     </div>
 {% endblock %}
