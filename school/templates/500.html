@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 {% include "_nav.html" %}
 
-{% block title %}Server Error{% endblock %}
+{% block title %}
+    <title>Error de Servidor - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+{% endblock %}
 
 {% block content %}
     <div class="column" style="max-width: 450px;">
         <h1 class="ui blue header">
-            <div class="content">Aw Crap!</div>
+            <div class="content">Error de Servidor</div>
         </h1>
 
-        <div class="ui message">
-            <p>Something went wrong, we are already working on it</p>
-            <p>Please come back later!</p>
+        <div class="ui left aligned basic segment">
+            <p>Algo sali&oacute; mal, ya estamos trabajando en ello!</p>
+            <p>Por favor regresa pronto</p>
         </div>
     </div>
 {% endblock %}

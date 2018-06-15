@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% include "_nav.html" %}
+
+{% block title %}
+    <title>Qui&eacute;nes Somos - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+{% endblock %}
+
+{% block content %}
+    <h1 class="ui blue header">Qui&eacute;nes Somos</h1>
+    <div itemscope itemtype="http://schema.org/Person">
+        <strong>
+            <h2 class="ui blue header" itemprop="name">
+                <span itemprop="givenName">Francisco</span>
+                <span itemprop="familyName">Benavides</span>
+            </h2>
+        </strong>
+        <a itemprop="telephone" href="tel:+5214493577852">(449) 357-7852 <i class="phone icon"></i></a>
+        <a itemprop="email" href="mailto:&#102;&#114;&#097;&#110;&#099;&#105;&#115;&#099;&#111;&#046;&#098;&#101;&#110;&#097;&#118;&#105;&#100;&#101;&#115;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;"><i class="envelope icon"></i></a>
+        <a itemprop="sameAs" href="http://www.linkedin.com/in/franciscobenavides" target="_blank"><i class="linkedin square icon"></i></a>
+        <a itemprop="sameAs" href="https://github.com/fbenavides69" target="_blank"><i class="github square icon"></i></a>
+        <a itemprop="sameAs" href="https://twitter.com/fbenavides" target="_blank"><i class="twitter square icon"></i></a>
+    </div>
+    <div class="ui left aligned basic segment">
+        <p>Bienvenidos! Soy desarrollador de aplicaciones y vivo en la ciudad capital de Aguascalientes. Soy Ingeniero en Electrónica y me he dedicado toda mi carrera profesional al desarrollo de sistemas y cuento con amplia experiencia en este campo.</p>
+        <p>Hemos colaborado con empresas Nacionales e Internacionales aplicando nuestros conocimientos desde el desarrollo de páginas web con SEO pasando por sistemas de telecomunicaciones y aplicaciones críticas de finanzas. Tengo más de 20 años de experiencia en todo el ciclo de desarrollo de sistemas. Soy entusiasta y me gusta lo que hago.</p>
+        <p>Nos basamos en tres valores fundamentales: <strong>Profesionalismo</strong>, <strong>Respeto</strong> y <strong>Perseveranza</strong>. Buscamos ponernos en los zapatos del cliente y nos esforzamos por hacer siempre las cosas bien la primera vez.</p>
+    </div>
+    <h2 class="ui blue header">Cont&aacute;ctenos</h2>
+    <div class="ui left aligned basic segment">
+        <p><strong><a itemprop="email" href="mailto:&#102;&#114;&#097;&#110;&#099;&#105;&#115;&#099;&#111;&#046;&#098;&#101;&#110;&#097;&#118;&#105;&#100;&#101;&#115;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Comuniquese con nosotros</a></strong>, nuestra empresa cuenta con probada experiencia en la creación y supervisión de sistemas. Estamos localizados en la hermosa ciudad capital de <strong>Aguascalientes</strong> y puede marcarnos al <strong><a itemprop="telephone" href="tel:+5214493577852">(449) 357-7852</a></strong> para pedir más información.</p>
+    </div>
+{% endblock %}
