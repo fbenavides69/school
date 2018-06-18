@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% include "_nav.html" %}
+
+{% block title %}
+    <title>Borrar - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+{% endblock %}
+
+{% block content %}
+  <h2>Borrar</h2>
+  <form action="" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    <p>Seguro que desea borrar?
+    {{ form.as_p }}
+    <p><input type="submit" value="Sí, Borrar" name="Delete" />  <a href="{% url 'alumni-lista' %}">No, Cancelar</a></p>
+  </form>
+{% endblock %}

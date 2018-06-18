@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '13e3und4^%7($1z@z4jwg)&t$4%4c7!_ln+8#ym3)=6vt#wf#$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'alumni.apps.AlumniConfig',
     'registration.apps.RegistrationConfig',
     'django.contrib.admin',
     'django.contrib.auth',

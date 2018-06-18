@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% include "_nav.html" %}
+
+{% block title %}
+    <title>Alumni Retrieve - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+{% endblock %}
+
+
+{% block content %}
+  <h2>Mostrar Alumno</h2>
+  
+  {% if alumno %}
+  <div class="container">
+    <div class="row">
+      
+      <!-- Foto alumno -->
+      <div class="span3">
+        {% if alumno.child_photo %}
+        <img src="{{ alumno.child_photo.url }}" alt="Foto {{ alumno.child_familynames }} {{ alumno.child_name }}" title="Foto {{ alumno.child_familynames }} {{ alumno.child_name }}" height="250px" width="200px" style="margin-top:15px">
+        {% endif %}
+      </div><!-- Foto alumno -->
+      
+      <!-- Datos alumno -->
+      <div class="span9">
+    
+    <fieldset>
+          <legend><strong>&nbsp;Alumno/Alumna&nbsp;</strong></legend>
+          <div class="row">
+            <div class="span9">
+              <h1><span style="color:#E44D26;">{{ alumno.child_familynames}} {{ alumno.child_name }}</span></h1>
+            </div>
+          </div><!-- Name -->
+          <div class="row">
+            <div class="span2">
+              <p>Edad:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.age }} A&ntilde;os</p>
+            </div>
+          </div><!-- Age -->
+          <div class="row">
+            <div class="span2">
+              <p>Fecha de Nacimiento:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.child_dob|localize }}</p>
+            </div>
+          </div><!-- DOB -->
+          <div class="row">
+            <div class="span2">
+              <p>CURP:<p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.child_curp_id }}</p>
+            </div>
+          </div><!-- CURP ID -->
+        </fieldset><!-- Alumno/Alumno -->
+
+        <fieldset>
+      <legend><strong>&nbsp;Escuela&nbsp;</strong></legend>
+          <div class="row">
+            <div class="span2">
+              <p>Folio:</p>
+            </div>
+            <div class="span7">
+              <p><span style="color:#F16529;">{{ alumno.folio }}</span></p>
+            </div>
+          </div><!-- Folio -->
+          <div class="row">
+            <div class="span2">
+              <p>Grado:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.group_string }}</p>
+            </div>
+          </div><!-- Group -->
+          <div class="row">
+            <div class="span2">
+              <p>Horario:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.schedule_string }}</p>
+            </div>
+          </div><!-- Schedule -->
+          <div class="row">
+            <div class="span2">
+              <p>Observaciones:</p>
+            </div>
+            <div class="span7">
+              <p>{{ alumno.child_observations }}</p>
+            </div>
+          </div><!-- Observations -->
+        </fieldset><!-- Escuela -->
+        
+      </div><!-- Datos alumno -->
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="span12 text-center">
+        <p><strong>En caso de Emergencia llamar al <span style="color:#E44D26;">{{ alumno.emergency_telephone_number }}</span> con el/la Sr(a). <span style="color:#E44D26;">{{ alumno.emergency_contact }}</span></strong></p>
+        <p><strong>El m&eacute;dico del alumno es el/la Dr(a). <span style="color:#E44D26;">{{ alumno.doctor }}</span> y el hospital es el <span style="color:#E44D26;">{{ alumno.hospital }}</span></strong></p>
+      </div>
+    </div><!-- row -->
+
+  </div><!-- container -->
+  {% else %}
+    <p>El alumno no existe</p>
+  {% endif %}
+{% endblock %}
