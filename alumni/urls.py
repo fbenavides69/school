@@ -2,7 +2,6 @@
 from django.urls import re_path
 from .views import (
     AlumniList,
-    AlumniRedirectMostrar,
     AlumniRetrieve,
     AlumniRetrievePadres,
     AlumniRetrieveAutorizado,
@@ -23,13 +22,9 @@ from .views import (
 
 urlpatterns = [
     re_path(
-        r'^$',
+        r'^lista$',
         AlumniList.as_view(),
-        name='list'),
-    re_path(
-        r'^(?P<pk>\d+)$',
-        AlumniRedirectMostrar.as_view(),
-        name='redirect-show'),
+        name='alumni-list'),
     re_path(
         r'^mostrar/(?P<pk>\d+)$',
         AlumniRetrieve.as_view(),
@@ -53,45 +48,45 @@ urlpatterns = [
     re_path(
         r'^inscripcion/$',
         AlumniRegister.as_view(),
-        name='alumni-inscripcion'),
+        name='alumni-register'),
     re_path(
         r'^inscripcion/padres/(?P<pk>\d+)$',
         AlumniRegisterPadres.as_view(),
-        name='alumni-inscripcion-padres'),
+        name='alumni-register-parents'),
     re_path(
         r'^inscripcion/autorizado/(?P<pk>\d+)$',
         AlumniRegisterAutorizado.as_view(),
-        name='alumni-inscripcion-autorizado'),
+        name='alumni-register-authorized'),
     re_path(
         r'^inscripcion/finanzas/(?P<pk>\d+)$',
         AlumniRegisterFinanzas.as_view(),
-        name='alumni-inscripcion-finanzas'),
+        name='alumni-register-finances'),
     re_path(
         r'^inscripcion/documentos/(?P<pk>\d+)$',
         AlumniRegisterDocumentos.as_view(),
-        name='alumni-inscripcion-documentos'),
+        name='alumni-register-documents'),
     re_path(
         r'^actualizar/(?P<pk>\d+)$',
         AlumniUpdate.as_view(),
-        name='alumni-actualizar'),
+        name='alumni-update'),
     re_path(
         r'^actualizar/padres/(?P<pk>\d+)$',
         AlumniUpdatePadres.as_view(),
-        name='alumni-actualizar-padres'),
+        name='alumni-update-parents'),
     re_path(
         r'^actualizar/autorizado/(?P<pk>\d+)$',
         AlumniUpdateAutorizado.as_view(),
-        name='alumni-actualizar-autorizado'),
+        name='alumni-update-authorized'),
     re_path(
         r'^actualizar/finanzas/(?P<pk>\d+)$',
         AlumniUpdateFinanzas.as_view(),
-        name='alumni-actualizar-finanzas'),
+        name='alumni-update-finances'),
     re_path(
         r'^actualizar/documentos/(?P<pk>\d+)$',
         AlumniUpdateDocumentos.as_view(),
-        name='alumni-actualizar-documentos'),
+        name='alumni-update-documents'),
     re_path(
         r'^borrar/(?P<pk>\d+)$',
         AlumniDelete.as_view(),
-        name='alumni-borrar'),
+        name='alumni-delete'),
 ]

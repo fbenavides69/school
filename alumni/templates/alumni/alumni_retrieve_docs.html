@@ -2,10 +2,9 @@
 {% include "_nav.html" %}
 
 {% block title %}
-    <title>Mostrar Documentos - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  <title>Mostrar Documentos - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+  <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
 {% endblock %}
-
 
 {% block content %}
   <h2>Mostrar Documentos</h2>
@@ -23,5 +22,9 @@
       <div class="span2"><p>CURP</p></div>
       <div class="span10"><p><a href="/media/{{ alumno.curp_card }}">{{ alumno.curp_card }}</a></p></div>
     </div>
+
+    <br />
+    <p><a href="{% url 'alumni-show' alumno.id %}"><input type="submit" value="Alumno(a)" /></a></p>
+
   </div>
 {% endblock %}

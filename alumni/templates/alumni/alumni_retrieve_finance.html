@@ -2,8 +2,8 @@
 {% include "_nav.html" %}
 
 {% block title %}
-    <title>Mostrar Pagos y Convenios - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  <title>Mostrar Pagos y Convenios - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+  <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
 {% endblock %}
 
 {% block content %}
@@ -11,152 +11,156 @@
   {% csrf_token %}
 
   <div class="container">
-  <fieldset>
-    <legend><strong>&nbsp;Colegiaturas&nbsp;</strong></legend>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <table class="table table-striped">
-              <tbody>
-                <tr>
-                  <td>Agosto:</td><td>{{ alumno.get_august_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.august_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Octubre:</td><td>{{ alumno.get_october_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.october_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Diciembre:</td><td>{{ alumno.get_december_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.december_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Febrero:</td><td>{{ alumno.get_february_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.february_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Abril:</td><td>{{ alumno.get_april_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.april_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Junio:</td><td>{{ alumno.get_june_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.june_annotations }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-          <td>
-            <table class="table table-striped">
-              <tbody>
-                <tr>
-                  <td>Septiembre:</td><td>{{ alumno.get_september_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.september_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Noviembre:</td><td>{{ alumno.get_november_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.november_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Enero:</td><td>{{ alumno.get_january_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.january_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Marzo:</td><td>{{ alumno.get_march_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.march_annotations }}</td>
-                </tr>
-                <tr>
-                  <td>Mayo:</td><td>{{ alumno.get_may_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.may_annotations }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <fieldset>
+      <legend><strong>&nbsp;Colegiaturas&nbsp;</strong></legend>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>Agosto:</td><td>{{ alumno.get_august_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.august_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Octubre:</td><td>{{ alumno.get_october_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.october_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Diciembre:</td><td>{{ alumno.get_december_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.december_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Febrero:</td><td>{{ alumno.get_february_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.february_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Abril:</td><td>{{ alumno.get_april_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.april_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Junio:</td><td>{{ alumno.get_june_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.june_annotations }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>Septiembre:</td><td>{{ alumno.get_september_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.september_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Noviembre:</td><td>{{ alumno.get_november_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.november_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Enero:</td><td>{{ alumno.get_january_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.january_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Marzo:</td><td>{{ alumno.get_march_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.march_annotations }}</td>
+                  </tr>
+                  <tr>
+                    <td>Mayo:</td><td>{{ alumno.get_may_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.may_annotations }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </fieldset>
 
     <br />
     <fieldset>
-    <legend><strong>&nbsp;Pagos &Uacute;nicos&nbsp;</strong></legend>
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <td>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Registro:</td><td>{{ alumno.get_register_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.register_notes }}</td>
-                </tr>
-                <tr>
-                  <td>Seguro:</td><td>{{ alumno.get_insurance_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.insurance_notes }}</td>
-                </tr>
-                <tr>
-                  <td>Uniforme:</td><td>{{ alumno.get_uniform_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.uniform_notes }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-          <td>
-            <table class="table table-striped">
-              <tbody>
-                <tr>
-                  <td>Material:</td><td>{{ alumno.get_supplies_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.supplies_notes }}</td>
-                </tr>
-                <tr>
-                  <td>Eventos:</td><td>{{ alumno.get_events_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.events_notes }}</td>
-                </tr>
-                <tr>
-                  <td>Otros:</td><td>{{ alumno.get_otros_payed_string }}</td>
-                </tr>
-                <tr>
-                  <td>Notas:</td><td>{{ alumno.otros_notes }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <legend><strong>&nbsp;Pagos &Uacute;nicos&nbsp;</strong></legend>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Registro:</td><td>{{ alumno.get_register_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.register_notes }}</td>
+                  </tr>
+                  <tr>
+                    <td>Seguro:</td><td>{{ alumno.get_insurance_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.insurance_notes }}</td>
+                  </tr>
+                  <tr>
+                    <td>Uniforme:</td><td>{{ alumno.get_uniform_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.uniform_notes }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>Material:</td><td>{{ alumno.get_supplies_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.supplies_notes }}</td>
+                  </tr>
+                  <tr>
+                    <td>Eventos:</td><td>{{ alumno.get_events_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.events_notes }}</td>
+                  </tr>
+                  <tr>
+                    <td>Otros:</td><td>{{ alumno.get_otros_payed_string }}</td>
+                  </tr>
+                  <tr>
+                    <td>Notas:</td><td>{{ alumno.otros_notes }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </fieldset>
+
+    <br />
+    <p><a href="{% url 'alumni-show-documents' alumno.id %}"><input type="submit" value="Documentos &rarr;" /></a></p>
+
   </div>
 
 {% endblock %}

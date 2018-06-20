@@ -2,21 +2,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Metas -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="mobile-web-app-capable" content="yes">
 
-    {% block title %}
-      <title>Untitled Document</title>
-      <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
-    {% endblock %}
+    <!-- Title -->
+    <title>{% block title %}Untitled Document{% endblock %}</title>
+    <!-- Description -->
+    <meta name="description" content="{% block meta-descripcion %}Description{% endblock %}">
     <meta name="author" content="Francisco Benavides">
 
-    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css" rel="stylesheet"  type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/react-table@latest/react-table.css" rel="stylesheet" type="text/css">
     <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
   </head>
   <body>
+    <!-- User -->
     <div class="ui fuild right aligned container">
       {% if user.is_authenticated %}
         {{ user.username }}
@@ -26,6 +29,7 @@
       <i class="blue user icon"></i>
     </div>
 
+    <!-- Top Menu -->
     <div class="ui center aligned page grid">
       <div class="computer tablet only row">
         <div class="ui blue fluid inverted navbar menu">
@@ -97,6 +101,7 @@
       </div>
     </div>
 
+    <!-- Content -->
     <div class="ui fuild basic very padded container segment">
       <div class="ui center aligned page grid">
         <div class="ui center aligned basic segment">
@@ -109,6 +114,7 @@
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="ui fuild container">
       <div class="computer tablet only row">
         <div class="ui inverted stackable divided equal height grid">
@@ -142,8 +148,12 @@
       </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
+    <script src="https://unpkg.com/react-table@latest/react-table.js"></script>
+    <script src="https://unpkg.com/react-table@latest/react-table.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script>var ReactTable = window.ReactTable.default</script>
   </body>
 </html>

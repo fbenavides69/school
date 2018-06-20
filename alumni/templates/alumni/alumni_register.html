@@ -2,17 +2,16 @@
 {% include "_nav.html" %}
 
 {% block title %}
-    <title>Inscripci&oacute;n Alumno - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  <title>Inscripci&oacute;n Alumno - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+  <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
 {% endblock %}
-
 
 {% block content %}
   <h2>Inscripci&oacute;n Alumno</h2>
   <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8">
     {% csrf_token %}
     
-     <fieldset>
+    <fieldset>
       <legend><strong>&nbsp;Alumno/Alumna&nbsp;</strong></legend>
       <div class="row">
         <div class="span2">
