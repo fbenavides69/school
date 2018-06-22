@@ -11,149 +11,88 @@
     <!-- Title -->
     <title>{% block title %}Untitled Document{% endblock %}</title>
     <!-- Description -->
-    <meta name="description" content="{% block meta-descripcion %}Description{% endblock %}">
+    <meta name="description" content="{% block descripcion %}Description{% endblock %}">
     <meta name="author" content="Francisco Benavides">
 
-    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css" rel="stylesheet" type="text/css">
-    <link href="https://unpkg.com/react-table@latest/react-table.css" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+    <!-- Styles -->
+    {% block styles %}
+      <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" scr="{% static 'js/jquery.js' %}"></script>
   </head>
   <body>
-    <!-- User -->
-    <div class="ui fuild right aligned container">
-      {% if user.is_authenticated %}
-        {{ user.username }}
-      {% else %}
-        Anonymous
-      {% endif %}
-      <i class="blue user icon"></i>
-    </div>
 
     <!-- Top Menu -->
-    <div class="ui center aligned page grid">
-      <div class="computer tablet only row">
-        <div class="ui blue fluid inverted navbar menu">
-          {% block menunav %}
-            <a href="/" class="brand item">School</a>
-            <!--a href="" class="active item">Link</a-->
-            <!--a href="" class="item">Link</a-->
-            <!--a href="" class="item">Link</a-->
-            <!--a class="ui dropdown item">Dropdown
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item">Action</div>
-                <div class="item">Another action</div>
-                <div class="item">Something else here</div>
-                <div class="ui divider"></div>
-                <div class="item">Seperated link</div>
-                <div class="item">One more seperated link</div>
-              </div>
-            </a-->
-            <div class="right menu">
-              {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}" class="item">Logout</a>
-              {% else %}
-                <a href="{% url 'register' %}" class="item">Register</a>
-                <a href="{% url 'login' %}" class="item">Login</a>
-              {% endif %}
-            </div>
+
+    <div class="ui fluid padded container basic segment">
+      <!-- Top Menu -->
+      <div class="ui blue borderless inverted menu">
+        <a class="header item" href="/">{% block brand %}<i class="speakap icon"></i>Brand{% endblock %}</a>
+        {% block left-menu %}
+          <a class="item" href="{% url 'about' %}">Qui&eacute;nes Somos</a>
+          <a class="item">Cont&aacute;ctanos</a>
+        {% endblock %}
+        <div class="right menu">
+          {% block right-menu%}
+            <a class="item" href="{% url 'alumni-list' %}">List</a>
           {% endblock %}
+          <a class="vertically fitted item">
+            <div class="ui blue padded buttons">
+            {% if user.is_authenticated %}
+              <a class="ui button item"><i class="icon user"></i>{{ user.username }}</a>
+              <a class="ui button item" href="{% url 'logout' %}"><i class="lock icon"></i>Logout</a>
+            {% else %}
+              <a class="ui button item" href="{% url 'register' %}"><i class="sign in alternate icon"></i>Signup</a>
+              <a class="ui button item" href="{% url 'login' %}"><i class="unlock icon"></i>Login</a>
+            {% endif %}
+            </div>
+          </a>
         </div>
-      </div>
-
-      <div class="mobile only narrow row">
-          <div class="ui blue inverted navbar menu">
-              <a href="" class="brand item">School</a>
-              <div class="right menu open">
-                  <a href="#" class="item menu">
-                      <i class="inverted bars icon"></i>
-                  </a>
-              </div>
-          </div>
-
-          <div class="ui blue iverted vertical navbar menu">
-            {% block verticalmenunav %}
-              <a href="/" class="brand item">School</a>
-              <!--a href="" class="active item">Link</a-->
-              <!--a href="" class="item">Link</a-->
-              <!--a href="" class="item">Link</a-->
-              <!--a class="ui dropdown item">Dropdown
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                  <div class="item">Action</div>
-                  <div class="item">Another action</div>
-                  <div class="item">Something else here</div>
-                  <div class="ui divider"></div>
-                  <div class="item">Seperated link</div>
-                  <div class="item">One more seperated link</div>
-                </div>
-              </a-->
-              <div class="right menu">
-                {% if user.is_authenticated %}
-                  <a href="{% url 'logout' %}" class="item">Logout</a>
-                {% else %}
-                  <a href="{% url 'register' %}" class="item">Register</a>
-                  <a href="{% url 'login' %}" class="item">Login</a>
-                {% endif %}
-              </div>
-            {% endblock %}
-          </div>
       </div>
     </div>
 
     <!-- Content -->
-    <div class="ui fuild basic very padded container segment">
-      <div class="ui center aligned page grid">
-        <div class="ui center aligned basic segment">
-            {% block content %}
-              <h1 class="ui header">Template</h1>
-              <p>Base Template</p>
-            {% endblock %}
-          <script src="{% static 'dist/bundle.js' %}" type="text/javascript" ></script>
-        </div>
-      </div>
-    </div>
+
+    {% block inout %}{% endblock %}
 
     <!-- Footer -->
-    <div class="ui fuild container">
-      <div class="computer tablet only row">
-        <div class="ui inverted stackable divided equal height grid">
-          <div class="blue row">
+
+    <div class="ui fluid padded container basic segment">
+      <!-- Footer -->
+      <div class="ui blue inverted segment">
+        <div class="ui inverted padded stackable internally celled equal height grid">
+          <div class="row">
             <div class="three wide column">
-              <a href="{% url 'about' %}"><h4 class="ui inverted header">Qui&eacute;nes Somos</h4></a>
+              <h4 class="ui inverted header">Qui&eacute;nes Somos</h4>
               <div class="ui inverted link list">
-                <a href="#" class="item"> <i class="sitemap icon"></i> Sitemap</a>
+                <a class="item" href="#"><i class="sitemap icon"></i> Sitemap</a>
                 <a class="item" itemprop="email" href="mailto:&#102;&#114;&#097;&#110;&#099;&#105;&#115;&#099;&#111;&#046;&#098;&#101;&#110;&#097;&#118;&#105;&#100;&#101;&#115;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;"><i class="envelope icon"></i> Cont&aacute;ctanos</a>
               </div>
             </div>
             <div class="three wide column">
               <h4 class="ui inverted header">Servicios</h4>
               <div class="ui inverted link list">
-                <a href="#" class="item">Soporte</a>
-                <a href="#" class="item">Preguntas Frequentes</a>
+                <a class="item" href="#"><i class="hand pointer icon"></i> Soporte</a>
+                <a class="item" href="#"><i class="question icon"></i>Preguntas Frequentes</a>
               </div>
             </div>
             <div class="seven wide column">
               <h4 class="ui inverted header">Footer Header</h4>
-              <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+              <p class="item">Extra space for a call to action inside the footer that could help re-engage users.</p>
             </div>
           </div>
-
-          <div class="blue row">
-            <div class="center aligned column">
-              Copyright &copy; 2018 iWYP
-            </div>
-          </div>
+        </div>
+        <div class="ui center aligned text container">
+            Copyright &copy; 2018 iWYP
         </div>
       </div>
     </div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="{% static 'dist/bundle.js' %}" type="text/javascript" ></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
-    <script src="https://unpkg.com/react-table@latest/react-table.js"></script>
-    <script src="https://unpkg.com/react-table@latest/react-table.min.js"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-    <script>var ReactTable = window.ReactTable.default</script>
   </body>
 </html>

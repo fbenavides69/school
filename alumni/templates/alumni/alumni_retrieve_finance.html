@@ -1,166 +1,201 @@
-{% extends "base.html" %}
-{% include "_nav.html" %}
+{% extends 'two_column.html' %}
 
 {% block title %}
-  <title>Mostrar Pagos y Convenios - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-  <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  Mostrar Pagos y Convenios 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
 {% endblock %}
 
-{% block content %}
-  <h2>Mostrar Pagos y Convenios</h2>
-  {% csrf_token %}
+{% block description %}
+  Automatizaci&oacute;n de procesos administrativos para planteles 
+  educativos por medio de m&oacute;dulos especializados en la 
+  gesti&oacute;n de inscripciones, control de alumnos y reportes varios.
+{% endblock %}
 
-  <div class="container">
-    <fieldset>
-      <legend><strong>&nbsp;Colegiaturas&nbsp;</strong></legend>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>Agosto:</td><td>{{ alumno.get_august_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.august_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Octubre:</td><td>{{ alumno.get_october_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.october_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Diciembre:</td><td>{{ alumno.get_december_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.december_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Febrero:</td><td>{{ alumno.get_february_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.february_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Abril:</td><td>{{ alumno.get_april_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.april_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Junio:</td><td>{{ alumno.get_june_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.june_annotations }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-            <td>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>Septiembre:</td><td>{{ alumno.get_september_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.september_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Noviembre:</td><td>{{ alumno.get_november_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.november_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Enero:</td><td>{{ alumno.get_january_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.january_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Marzo:</td><td>{{ alumno.get_march_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.march_annotations }}</td>
-                  </tr>
-                  <tr>
-                    <td>Mayo:</td><td>{{ alumno.get_may_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.may_annotations }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </fieldset>
+{% block side-nav %}
+  <a class="item" href="{% url 'alumni-show' alumno.id %}">Alumno</a>
+  <a class="item" href="{% url 'alumni-show-parents' alumno.id %}">Padres</a>
+  <a class="item" href="{% url 'alumni-show-address' alumno.id %}">Dirección</a>
+  <a class="item" href="{% url 'alumni-show-authorized' alumno.id %}">Autorizado</a>
+  <a class="active item" href="{% url 'alumni-show-finances' alumno.id %}">Finanzas</a>
+  <a class="item" href="{% url 'alumni-show-documents' alumno.id %}">Documentos</a>
+{% endblock %}
 
-    <br />
-    <fieldset>
-      <legend><strong>&nbsp;Pagos &Uacute;nicos&nbsp;</strong></legend>
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <td>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Registro:</td><td>{{ alumno.get_register_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.register_notes }}</td>
-                  </tr>
-                  <tr>
-                    <td>Seguro:</td><td>{{ alumno.get_insurance_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.insurance_notes }}</td>
-                  </tr>
-                  <tr>
-                    <td>Uniforme:</td><td>{{ alumno.get_uniform_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.uniform_notes }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-            <td>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>Material:</td><td>{{ alumno.get_supplies_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.supplies_notes }}</td>
-                  </tr>
-                  <tr>
-                    <td>Eventos:</td><td>{{ alumno.get_events_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.events_notes }}</td>
-                  </tr>
-                  <tr>
-                    <td>Otros:</td><td>{{ alumno.get_otros_payed_string }}</td>
-                  </tr>
-                  <tr>
-                    <td>Notas:</td><td>{{ alumno.otros_notes }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </fieldset>
+{% block side-content %}
+  {% if alumno %}
+    <div class="ui text basic segment">
+      <div class="ui text basic segment">
+        <h1 class="ui blue header">Colegiaturas</h1>
+      </div>
+      <div class="ui celled grid">
+        <div class="twelve wide column">
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Agosto</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_august_payed_string }}
+                <div class="ui message">{{ alumno.august_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Septiembre</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_september_payed_string }}
+                <div class="ui message">{{ alumno.september_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Octubre</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_october_payed_string }}
+                <div class="ui message">{{ alumno.october_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Noviembre</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_november_payed_string }}
+                <div class="ui message">{{ alumno.november_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Diciembre</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_december_payed_string }}
+                <div class="ui message">{{ alumno.december_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Enero</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_january_payed_string }}
+                <div class="ui message">{{ alumno.january_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Febrero</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_february_payed_string }}
+                <div class="ui message">{{ alumno.february_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Marzo</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_march_payed_string }}
+                <div class="ui message">{{ alumno.march_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Abril</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_april_payed_string }}
+                <div class="ui message">{{ alumno.april_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Mayo</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_may_payed_string }}
+                <div class="ui message">{{ alumno.may_annotations }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Junio</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_june_payed_string }}
+                <div class="ui message">{{ alumno.june_annotations }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui text basic segment">
+        <h1 class="ui blue header">Pagos Únicos</h1>
+      </div>
+      <div class="ui celled grid">
+        <div class="twelve wide column">
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Registro</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_register_payed_string }}
+                <div class="ui message">{{ alumno.register_notes }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Seguro</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_insurance_payed_string }}
+                <div class="ui message">{{ alumno.insurance_notes }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Uniforme</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_uniform_payed_string }}
+                <div class="ui message">{{ alumno.uniform_notes }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Material</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_supplies_payed_string }}
+                <div class="ui message">{{ alumno.supplies_notes }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Eventos</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_events_payed_string }}
+                <div class="ui message">{{ alumno.events_notes }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Otros</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.get_otros_payed_string }}
+                <div class="ui message">{{ alumno.otros_notes }}</div>
+              </div>
+            </div>
+          </div>
 
-    <br />
-    <p><a href="{% url 'alumni-show-documents' alumno.id %}"><input type="submit" value="Documentos &rarr;" /></a></p>
-
-  </div>
-
+       </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="ui center aligned text basic segment">
+      <p>El alumno no existe</p>
+    </div>
+  {% endif %}
 {% endblock %}

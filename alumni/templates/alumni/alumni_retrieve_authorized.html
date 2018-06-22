@@ -1,110 +1,74 @@
-{% extends "base.html" %}
-{% include "_nav.html" %}
+{% extends 'two_column.html' %}
 
 {% block title %}
-  <title>Mostrar Persona(s) Autorizada(s) - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-  <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  Mostrar Persona(s) Autorizada(s) 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
 {% endblock %}
 
-{% block content %}
-  <h2>Mostrar Persona(s) Autorizada(s)</h2>
-  {% csrf_token %}
+{% block description %}
+  Automatizaci&oacute;n de procesos administrativos para planteles 
+  educativos por medio de m&oacute;dulos especializados en la 
+  gesti&oacute;n de inscripciones, control de alumnos y reportes varios.
+{% endblock %}
 
-  <div class="container">
-  
-    <!-- Persona autrizada 1 -->
-    <div class="row">
-      <fieldset>
-        <legend><strong>&nbsp;Persona Autorizada&nbsp;</strong></legend>
-        <div class="row">
-          <div class="span2">
-            <p>Nombre:</p>
-          </div>
-          <div class="span2">
-            <p>{{ alumno.authorized1_name }}</p>
-          </div>
-          <div class="apan8">
-            <p>{{ alumno.authorized1_familynames }}</p>
-          </div>
-        </div><!-- Nombre -->
-        <div class="row">
-          <div class="span2">
-            <p>Tel. Celular:<p>
-          </div>
-          <div class="span10">
-            <p>{{ alumno.authorized1_cell_phone }}</p>
-          </div>
-        </div><!-- Teléfono celular -->
-        <div class="row">
-          <div class="span2">
-            <p>Tel. Casa:</p>
-          </div>
-          <div class="span10">
-            <p>{{ alumno.authorized1_telephone }}</p>
-          </div>
-        </div><!-- Teléfono residencial/casa -->
-        <div class="row">
-          <div class="span2">
-            <p>Parentezco:</p>
-          </div>
-          <div class="span10">
-            {% if alumno.authorized1_parentezco %}
-              <p>{{ alumno.get_parentezco1_string }}</p>
-            {% else %}
-              <p></p>
-            {% endif %}
-        </div><!-- Parentezco -->
-      </fieldset>
-    </div><!-- Persona autorizada 1 -->
+{% block side-nav %}
+  <a class="item" href="{% url 'alumni-show' alumno.id %}">Alumno</a>
+  <a class="item" href="{% url 'alumni-show-parents' alumno.id %}">Padres</a>
+  <a class="item" href="{% url 'alumni-show-address' alumno.id %}">Dirección</a>
+  <a class="active item" href="{% url 'alumni-show-authorized' alumno.id %}">Autorizado</a>
+  <a class="item" href="{% url 'alumni-show-finances' alumno.id %}">Finanzas</a>
+  <a class="item" href="{% url 'alumni-show-documents' alumno.id %}">Documentos</a>
+{% endblock %}
 
-    <!-- Persona autorizada 2 -->
-    <div class="row">
-      <fieldset>
-        <legend><strong>&nbsp;Persona Autorizada&nbsp;</strong></legend>
-        <div class="row">
-          <div class="span2">
-            <p>Nombre:</p>
-          </div>
-          <div class="span2">
-            <p>{{ alumno.authorized2_name }}</p>
-          </div>
-          <div class="apan8">
-            <p>{{ alumno.authorized2_familynames }}</p>
-          </div>
-        </div><!-- Nombre -->
-        <div class="row">
-          <div class="span2">
-            <p>Tel. Celular:<p>
-          </div>
-          <div class="span10">
-            <p>{{ alumno.authorized2_cell_phone }}</p>
-          </div>
-        </div><!-- Teléfono celular -->
-        <div class="row">
-          <div class="span2">
-            <p>Tel. Casa:</p>
-          </div>
-          <div class="span10">
-            <p>{{ alumno.authorized2_telephone }}</p>
-          </div>
-        </div><!-- Teléfono residencial/casa -->
-        <div class="row">
-          <div class="span2">
-            <p>Parentezco:</p>
-          </div>
-          <div class="span10">
-            {% if alumno.authorized2_parentezco %}
-              <p>{{ alumno.get_parentezco2_string }}</p>
-            {% else %}
-              <p></p>
-            {% endif %}
-          </div>
-        </div><!-- Parentezco -->
-      </fieldset>
-    </div><!-- Persona autorizada 2 -->
+{% block side-content %}
+  {% if alumno %}
+    <div class="ui text basic segment">
+      <div class="ui celled grid">
+        <div class="twelve wide column">
+          {% if alumno.authorized1_name %}
+            <div class="ui text basic segment">
+              <h1 class="ui blue header">{{ alumno.authorized1_name }} {{ alumno.authorized1_familynames }}</h1>
+              {{ alumno.get_parentezco1_string }}
+            </div>
+            <div class="row">
+              <div class="ui grid">
+                <div class="ui right aligned three wide column"><strong>Personal</strong></div>
+                <div class="ui six wide column">{{ alumno.authorized1_cell_phone }}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="ui grid">
+                <div class="ui right aligned three wide column"><strong>Casa</strong></div>
+                <div class="ui six wide column">{{ alumno.authorized1_telephone }}</div>
+              </div>
+            </div>
+          {% endif %}
 
-    <br />
-    <p><a href="{% url 'alumni-show-finances' alumno.id %}"><input type="submit" value="Pagos y Convenios &rarr;" /></a></p>
-
-  </div><!-- container -->
+          {% if alumno.authorized2_name %}
+            <div class="ui text basic segment">
+              <h1 class="ui blue header">{{ alumno.authorized2_name }} {{ alumno.authorized2_familynames }}</h1>
+              {{ alumno.get_parentezco2_string }}
+            </div>
+            <div class="row">
+              <div class="ui grid">
+                <div class="ui right aligned three wide column"><strong>Personal</strong></div>
+                <div class="ui six wide column">{{ alumno.authorized2_cell_phone }}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="ui grid">
+                <div class="ui right aligned three wide column"><strong>Casa</strong></div>
+                <div class="ui six wide column">{{ alumno.authorized2_telephone }}</div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="ui center aligned text basic segment">
+      <p>El alumno no existe</p>
+    </div>
+  {% endif %}
 {% endblock %}

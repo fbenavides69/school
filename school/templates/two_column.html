@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block inout %}
+
+  <!-- Two Column -->
+
+  <div class="ui fluid container basic segment">
+
+    <!-- Side Menu Inside -->
+    <div class="ui grid">
+      <div class="four wide column">
+        <div class="ui vertical fluid tabular menu">
+          {% block side-nav %}
+            <a class="active item">Item 1</a>
+            <a class="item">Item 2</a>
+            <a class="item">Item 3</a>
+            <a class="item">Item 4</a>
+            <a class="item">Item 5</a>
+          {% endblock %}
+        </div>
+      </div>
+
+      <!-- Content Inside -->
+      <div class="twelve wide stretched column">
+        {% block side-content %}
+          <div class="ui text basic segment">
+            <h1 class="ui blu header">Show</h2>
+            <p>Show some content here.</p>
+          </div>
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

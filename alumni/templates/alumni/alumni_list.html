@@ -1,51 +1,49 @@
-{% extends "base.html" %}
-{% include "_nav.html" %}
+{% extends 'list.html' %}
 
 {% block title %}
-  <title>Alunni List - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-  <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  Alunni List 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
+{% endblock%}
+
+{% block description %}
+  Automatizaci&oacute;n de procesos administrativos para planteles 
+  educativos por medio de m&oacute;dulos especializados en la 
+  gesti&oacute;n de inscripciones, control de alumnos y reportes varios.
 {% endblock %}
 
-{% block content %}
-  {% if all_alumni %}
+{% block table-header%}
+  <th>Folio</th>
+  <th>Nombre(s)</th>
+  <th>Apellidos</th>
+  <th>Grupo</th>
+  <th>Tel&eacute;fono de Emergencia</th>
+{% endblock %}
 
-    <div class="container">
-      <table class="ui selectable striped celled table" style="width:100%">
-        <thead>
-          <tr>
-          <th>Folio</th>
-          <th>Nombre(s)</th>
-          <th>Apellidos</th>
-          <th>Grupo</th>
-          <th>Tel&eacute;fono de Emergencia</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for alumni in all_alumni %}
-          <tr>
-            <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.folio }}</a></td>
-            <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.child_name }}</a></td>
-            <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.child_familynames }}</a></td>
-            <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.group_string }}</a></td>
-            <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.emergency_telephone_number }}</a></td>
-            <!--td><a href="{% url 'alumni-update' alumni.id %}">Editar</a>&nbsp;<a href="{% url 'alumni-delete' alumni.id %}">Borrar</a></td-->
-          </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-          <tr>
-          <th>Folio</th>
-          <th>Nombre(s)</th>
-          <th>Apellidos</th>
-          <th>Grupo</th>
-          <th>Tel&eacute;fono de Emergencia</th>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+{% block table-content %}
+  {% if all_alumni %}
+    {% for alumni in all_alumni %}
+      <tr>
+        <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.folio }}</a></td>
+        <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.child_name }}</a></td>
+        <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.child_familynames }}</a></td>
+        <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.group_string }}</a></td>
+        <td><a href="{% url 'alumni-show' alumni.id %}">{{ alumni.emergency_telephone_number }}</a></td>
+        <!--td><a href="{% url 'alumni-update' alumni.id %}">Editar</a>&nbsp;<a href="{% url 'alumni-delete' alumni.id %}">Borrar</a></td-->
+      </tr>
+    {% endfor %}
   {% else %}
-    <p>
-      No hay alumnos
-    </p>
+    <tr>
+      <td colspan="5">No hay alumnos</td>
+    </tr>
   {% endif %}
+{% endblock %}
+
+{% block table-pagination %}
+  <th colspan="5">
+    <div class="ui right floated pagination menu">
+        <a class="icon item"><i class="left chevron icon"></i></a>
+        <a class="icon item"><i class="right chevron icon"></i></a>
+    </div>
+  </th>
 {% endblock %}

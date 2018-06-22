@@ -30,6 +30,12 @@ class AlumniRetrievePadres(LoginRequiredMixin, DetailView):
     context_object_name = 'alumno'
 
 
+class AlumniRetrieveDireccion(LoginRequiredMixin, DetailView):
+    template_name = 'alumni/alumni_retrieve_address.html'
+    model = models.Alumni
+    context_object_name = 'alumno'
+
+
 class AlumniRetrieveAutorizado(LoginRequiredMixin, DetailView):
     template_name = 'alumni/alumni_retrieve_authorized.html'
     model = models.Alumni

@@ -1,20 +1,23 @@
-{% extends "base.html" %}
-{% include "_nav.html" %}
+{% extends 'external.html' %}
 
 {% block title %}
-    <title>User Registration Success - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  User Registration Success 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
 {% endblock %}
 
-{% block content %}
-    <div class="column" style="max-width: 450px;">
-        <h1 class="ui blue header">
-            <div class="content">User Registration Success</div>
-        </h1>
+{% block description %}
+  Automatizaci&oacute;n de procesos administrativos para planteles 
+  educativos por medio de m&oacute;dulos especializados en la 
+  gesti&oacute;n de inscripciones, control de alumnos y reportes varios.
+{% endblock %}
 
-        <div class="ui success message">
-            <p>You have successfully registered</p>
-        </div>
-        {% csrf_token %}
-    </div>
+{% block external %}
+  <div class="ui center aligned text basic segment">
+      <h1 class="ui blue header">User Registration Success</h1>
+  </div>
+  <div class="ui success message">
+    <p>You have successfully registered</p>
+  </div>
+  {% csrf_token %}
 {% endblock %}

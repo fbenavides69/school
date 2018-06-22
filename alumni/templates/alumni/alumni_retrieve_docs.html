@@ -1,30 +1,54 @@
-{% extends "base.html" %}
-{% include "_nav.html" %}
+{% extends 'two_column.html' %}
 
 {% block title %}
-  <title>Mostrar Documentos - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-  <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  Mostrar Documentos 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
 {% endblock %}
 
-{% block content %}
-  <h2>Mostrar Documentos</h2>
-  {% csrf_token %}
-  <div class="container">
-    <div class="row">
-      <div class="span2"><p>Acta de Nacimiento:</p></div>
-      <div class="span10"><p><a href="/media/{{ alumno.birth_certificate }}">{{ alumno.birth_certificate }}</a></p></div>
-    </div>
-    <div class="row">
-      <div class="span2"><p>Cartilla de Vacunaci&oacute;n:</p></div>
-      <div class="span10"><p><a href="/media/{{ alumno.immunization_card }}">{{ alumno.immunization_card }}</a></p></div>
-    </div>
-    <div class="row">
-      <div class="span2"><p>CURP</p></div>
-      <div class="span10"><p><a href="/media/{{ alumno.curp_card }}">{{ alumno.curp_card }}</a></p></div>
-    </div>
+{%block description %}
+  Automatizaci&oacute;n de procesos administrativos para planteles 
+  educativos por medio de m&oacute;dulos especializados en la 
+  gesti&oacute;n de inscripciones, control de alumnos y reportes varios.
+{% endblock %}
 
-    <br />
-    <p><a href="{% url 'alumni-show' alumno.id %}"><input type="submit" value="Alumno(a)" /></a></p>
+{% block side-nav %}
+  <a class="item" href="{% url 'alumni-show' alumno.id %}">Alumno</a>
+  <a class="item" href="{% url 'alumni-show-parents' alumno.id %}">Padres</a>
+  <a class="item" href="{% url 'alumni-show-address' alumno.id %}">Dirección</a>
+  <a class="item" href="{% url 'alumni-show-authorized' alumno.id %}">Autorizado</a>
+  <a class="item" href="{% url 'alumni-show-finances' alumno.id %}">Finanzas</a>
+  <a class="active item" href="{% url 'alumni-show-documents' alumno.id %}">Documentos</a>
+{% endblock %}
 
-  </div>
+{% block side-content %}
+  {% if alumno %}
+    <div class="ui text basic segment">
+      <div class="ui celled grid">
+        <div class="twelve wide column">
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Acta de Nacimiento</strong></div>
+              <div class="ui six wide column"><a href="/media/{{ alumno.birth_certificate }}">{{ alumno.birth_certificate }}</a></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Cartilla de Vacunación</strong></div>
+              <div class="ui six wide column"><a href="/media/{{ alumno.immunization_card }}">{{ alumno.immunization_card }}</a></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>CURP</strong></div>
+              <div class="ui six wide column"><a href="/media/{{ alumno.curp_card }}">{{ alumno.curp_card }}</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  {% else %}
+    <div class="ui center aligned text basic segment">
+      <p>El alumno no existe</p>
+    </div>
+  {% endif %}
 {% endblock %}

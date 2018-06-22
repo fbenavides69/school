@@ -1,39 +1,43 @@
-{% extends "base.html" %}
-{% include "_nav.html" %}
+{% extends 'external.html' %}
 
 {% block title %}
-    <title>Login - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
-    <meta name="description" content="Automatizaci&oacute;n de procesos administrativos para planteles educativos por medio de m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, control de alumnos y reportes varios.">
+  Login 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
 {% endblock %}
 
-{% block content %}
-    <div class="column" style="max-width: 450px;">
+{% block description %}
+  Automatizaci&oacute;n de procesos administrativos para planteles 
+  educativos por medio de m&oacute;dulos especializados en la 
+  gesti&oacute;n de inscripciones, control de alumnos y reportes varios.
+{% endblock %}
 
-        <h1 class="ui blue header">
-            <div class="content">Login</div>
-        </h1>
-
-        <div class="ui basic segment">
-            <form class="ui form" method="post" action="{% url 'login' %}">
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="username" maxlength="254" autofocus required id="id_username" placeholder="Username" />
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" required id="id_password" placeholder="Password" />
-                    </div>
-                </div>
-                <button class="ui fluid principal icon button" type="submit" value="login">
-                    <i class="sign in alternate icon"></i>
-                    Login
-                </button>
-                <input type="hidden" name="next" value="{{ next }}" />
-                {% csrf_token %}
-            </form>
+{% block external %}
+  <div class="ui center aligned text basic segment">
+    <h1 class="ui blue center aligned header">Login</h1>
+  </div>
+  <div class="ui text basic segment">
+    <form class="ui form" method="post" action="{% url 'login' %}">
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" name="username" maxlength="254" autofocus required id="id_username" placeholder="Username" />
         </div>
-    </div>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" name="password" required id="id_password" placeholder="Password" />
+        </div>
+      </div>
+      <button class="ui fluid principal icon button" type="submit" value="login">
+        <i class="unlock icon"></i>
+        Login
+      </button>
+
+      <div class="ui error message"></div>
+      <input type="hidden" name="next" value="{{ next }}" />
+      {% csrf_token %}
+    </form>
+  </div>
 {% endblock %}

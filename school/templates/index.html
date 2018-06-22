@@ -1,18 +1,25 @@
-{% extends 'base.html' %}
-{% include "_nav.html" %}
+{% extends 'external.html' %}
 
 {% block title %}
-    <title>Bienvenidos - M&eacute;xico Administraci&oacute;n Escolar - Control de Plantel Educativo Aguascalientes</title>
+  Bienvenidos 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
 {% endblock %}
 
-{% block meta-description %}
-Bienvenidos, Proveemos un servicio para la automatizaci&oacute;n de procesos
-administrativos para planteles educativos por medio de m&oacute;dulos
-especializados en la gesti&oacute;n de inscripciones, control de alumnos y
-reportes varios.
+{% block description %}
+  Bienvenidos, Proveemos un servicio para la automatizaci&oacute;n
+  de procesos administrativos para planteles educativos por medio de 
+  m&oacute;dulos especializados en la gesti&oacute;n de inscripciones, 
+  control de alumnos y reportes varios.
 {% endblock %}
 
-{% block content %}
+{% block external %}
+  <div class="ui center aligned text basic segment">
     <h1 class="ui blue header">Django</h1>
-    <div id="react-welcome"></div>
+  </div>
+  <div class="ui center aligned header" id="react-welcome"></div>
+  <div class="ui text basic segment">
+    <h2 class="ui blue horizontal divider header">Details</h2>
+    <p class="ui left aligned text">Landing page text.</p>
+  </div>
 {% endblock %}

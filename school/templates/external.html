@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block inout %}
+
+  <!-- External -->
+
+  <div class="ui fluid padded container basic segment">
+    {% block external %}
+      <div class="ui center aligned text basic segment">
+        <h1 class="ui header">External</h1>
+      </div>
+      <div class="ui text basic segment">
+        <h2 class="ui blue horizontal divider header">More Details</h2>
+        <p class="ui left aligned text">Some page text.</p>
+      </div>
+    {% endblock %}
+  </div>
+
+{% endblock %}

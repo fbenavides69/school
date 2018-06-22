@@ -350,10 +350,14 @@ class Alumni(models.Model):
         return os.path.basename(self.mother_ife_file.name)
 
     def get_parentezco1_string(self):
-        return PARENTEZCO_CHOICES[self.authorized1_parentezco][1]
+        if self.authorized1_parentezco:
+            return PARENTEZCO_CHOICES[self.authorized1_parentezco][1]
+        return ''
 
     def get_parentezco2_string(self):
-        return PARENTEZCO_CHOICES[self.authorized2_parentezco][1]
+        if self.authorized2_parentezco:
+            return PARENTEZCO_CHOICES[self.authorized2_parentezco][1]
+        return ''
 
     def get_august_payed_string(self):
         return ALUMNI_CHOICES[self.august_payed][1]

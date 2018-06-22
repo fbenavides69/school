@@ -4,6 +4,7 @@ from .views import (
     AlumniList,
     AlumniRetrieve,
     AlumniRetrievePadres,
+    AlumniRetrieveDireccion,
     AlumniRetrieveAutorizado,
     AlumniRetrieveFinanzas,
     AlumniRetrieveDocumentos,
@@ -33,6 +34,10 @@ urlpatterns = [
         r'^mostrar/padres/(?P<pk>\d+)$',
         AlumniRetrievePadres.as_view(),
         name='alumni-show-parents'),
+    re_path(
+        r'^mostrar/direccion/(?P<pk>\d+)$',
+        AlumniRetrieveDireccion.as_view(),
+        name='alumni-show-address'),
     re_path(
         r'^mostrar/autorizado/(?P<pk>\d+)$',
         AlumniRetrieveAutorizado.as_view(),

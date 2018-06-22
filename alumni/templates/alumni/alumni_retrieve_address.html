@@ -1,0 +1,81 @@
+{% extends 'two_column.html' %}
+
+{% block title %}
+  Mostrar Dirección 
+  - M&eacute;xico Administraci&oacute;n Escolar 
+  - Control de Plantel Educativo Aguascalientes
+{% endblock %}
+
+{% block description %}
+  Automatizaci&oacute;n de procesos administrativos para planteles 
+  educativos por medio de m&oacute;dulos especializados en la 
+  gesti&oacute;n de inscripciones, control de alumnos y reportes varios.
+{% endblock %}
+
+{% block side-nav %}
+  <a class="item" href="{% url 'alumni-show' alumno.id %}">Alumno</a>
+  <a class="item" href="{% url 'alumni-show-parents' alumno.id %}">Padres</a>
+  <a class="active item" href="{% url 'alumni-show-address' alumno.id %}">Dirección</a>
+  <a class="item" href="{% url 'alumni-show-authorized' alumno.id %}">Autorizados</a>
+  <a class="item" href="{% url 'alumni-show-finances' alumno.id %}">Finanzas</a>
+  <a class="item" href="{% url 'alumni-show-documents' alumno.id %}">Documentos</a>
+{% endblock %}
+
+{% block side-content %}
+  {% if alumno %}
+    <div class="ui text basic segment">
+      <div class="ui celled grid">
+        <div class="twelve wide column">
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Tel. Casa</strong></div>
+              <div class="ui six wide column">{{ alumno.house_telephone }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Calle</strong></div>
+              <div class="ui six wide column">
+                {{ alumno.street_name }} 
+                {% if alumno.street_exterior_number %}
+                  ext. {{ alumno.street_exterior_number }} 
+                {% endif %}
+                {% if alumno.street_interior_number %}
+                  int. {{ alumno.street_interior_number }}
+                {% endif %}
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Colonia</strong></div>
+              <div class="ui six wide column">{{ alumno.area_colonia }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>C.P.</strong></div>
+              <div class="ui six wide column">{{ alumno.zip_code }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Mapa</strong></div>
+              <div class="ui six wide column">{{ alumno.mapa}}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="ui grid">
+              <div class="ui right aligned three wide column"><strong>Descripción</strong></div>
+              <div class="ui six wide column">{{ alumno.description }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="ui center aligned text basic segment">
+      <p>El alumno no existe</p>
+    </div>
+  {% endif %}
+{% endblock %}
