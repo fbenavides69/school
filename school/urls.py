@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import re_path
 from django.urls import include
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', TemplateView.as_view(
@@ -37,3 +38,6 @@ urlpatterns = [
         r'^',
         include('alumni.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

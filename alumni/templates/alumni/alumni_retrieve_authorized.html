@@ -23,48 +23,67 @@
 
 {% block side-content %}
   {% if alumno %}
-    <div class="ui text basic segment">
-      <div class="ui celled grid">
-        <div class="twelve wide column">
-          {% if alumno.authorized1_name %}
-            <div class="ui text basic segment">
-              <h1 class="ui blue header">{{ alumno.authorized1_name }} {{ alumno.authorized1_familynames }}</h1>
-              {{ alumno.get_parentezco1_string }}
-            </div>
-            <div class="row">
-              <div class="ui grid">
-                <div class="ui right aligned three wide column"><strong>Personal</strong></div>
-                <div class="ui six wide column">{{ alumno.authorized1_cell_phone }}</div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="ui grid">
-                <div class="ui right aligned three wide column"><strong>Casa</strong></div>
-                <div class="ui six wide column">{{ alumno.authorized1_telephone }}</div>
-              </div>
-            </div>
-          {% endif %}
-
-          {% if alumno.authorized2_name %}
-            <div class="ui text basic segment">
-              <h1 class="ui blue header">{{ alumno.authorized2_name }} {{ alumno.authorized2_familynames }}</h1>
-              {{ alumno.get_parentezco2_string }}
-            </div>
-            <div class="row">
-              <div class="ui grid">
-                <div class="ui right aligned three wide column"><strong>Personal</strong></div>
-                <div class="ui six wide column">{{ alumno.authorized2_cell_phone }}</div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="ui grid">
-                <div class="ui right aligned three wide column"><strong>Casa</strong></div>
-                <div class="ui six wide column">{{ alumno.authorized2_telephone }}</div>
-              </div>
-            </div>
-          {% endif %}
-        </div>
+    <div class="ui basic segment">
+      <div class="ui top attached tabular menu">
+        {% if alumno.authorized1_name %}
+          <a class="active item" data-tab="{{ alumno.authorized1_name }}">{{ alumno.authorized1_name }}</a>
+        {% endif %}
+        {% if alumno.authorized2_name %}
+          <a class="item" data-tab="{{ alumno.authorized2_name }}">{{ alumno.authorized2_name }}</a>
+        {% endif %}
       </div>
+      {% if alumno.authorized1_name %}
+        <div class="ui bottom attached active tab segment" data-tab="{{ alumno.authorized1_name }}">
+          <div class="ui text basic segment">
+            <div class="ui grid">
+              <div class="twelve wide column">
+                  <div class="ui text basic segment">
+                    <h1 class="ui blue header">{{ alumno.authorized1_name }} {{ alumno.authorized1_familynames }}</h1>
+                    {{ alumno.get_parentezco1_string }}
+                  </div>
+                  <div class="row">
+                    <div class="ui grid">
+                      <div class="ui right aligned three wide column"><strong>Personal</strong></div>
+                      <div class="ui six wide column">{{ alumno.authorized1_cell_phone }}</div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="ui grid">
+                      <div class="ui right aligned three wide column"><strong>Casa</strong></div>
+                      <div class="ui six wide column">{{ alumno.authorized1_telephone }}</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {% if alumno.authorized2_name %}
+        <div class="ui bottom attached active tab segment" data-tab="{{ alumno.authorized2_name }}">
+          <div class="ui text basic segment">
+            <div class="ui grid">
+              <div class="twelve wide column">
+                  <div class="ui text basic segment">
+                    <h1 class="ui blue header">{{ alumno.authorized2_name }} {{ alumno.authorized2_familynames }}</h1>
+                    {{ alumno.get_parentezco2_string }}
+                  </div>
+                  <div class="row">
+                    <div class="ui grid">
+                      <div class="ui right aligned three wide column"><strong>Personal</strong></div>
+                      <div class="ui six wide column">{{ alumno.authorized2_cell_phone }}</div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="ui grid">
+                      <div class="ui right aligned three wide column"><strong>Casa</strong></div>
+                      <div class="ui six wide column">{{ alumno.authorized2_telephone }}</div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
     </div>
   {% else %}
     <div class="ui center aligned text basic segment">
