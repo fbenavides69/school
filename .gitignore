@@ -113,3 +113,4 @@ yarn.lock
 .idea
 .DS_Store
 .sass-cache
+.vscode
